@@ -44,10 +44,6 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space))
-        Hit(10);
-
-
     }
 
     private void FixedUpdate()
@@ -57,7 +53,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Check to see if collide with enemy
+        Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+
+        if (enemy != null)
+            Hit(20);
     }
 
     void Hit(int damage) //Subtracts damage from current health
